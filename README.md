@@ -84,18 +84,18 @@ This project implements a comprehensive framework for enhancing and analyzing in
 The project makes use of the Google Maps Geocoding API to provide each incident with additional geographic information. The location text, including addresses, that can be found in incident reports is converted into exact latitude and longitude coordinates using this API. The ensuing spatial analysis, which includes identifying the side of town where occurrences occur, depends on this geocoding stage. The application can analyse incidents in relation to particular geographic locations thanks to the geocoded coordinates, adding spatial insights to the dataset that are crucial for public safety and resource allocation plans.
 
 ### Weather Data Integration
-Understanding the weather conditions at the time of each incident adds another layer of context to the analysis. To achieve this, the project taps into a Historical Weather API, fetching weather conditions based on the date, time, and geographic coordinates of each incident. Specifically, the project retrieves the WMO (World Meteorological Organization) code, which represents a standardized weather condition. This integration allows for the examination of how weather might influence the occurrence or nature of incidents, providing a fuller picture of the circumstances surrounding each event.
+Knowing the weather at the time of each incidence gives the study an additional level of context. In order to do this, the project uses a Historical meteorological API to retrieve meteorological information based on each incident's date, time, and geographic locations. In particular, the project returns a standard meteorological condition represented by the WMO (World Meteorological Organisation) code. This integration gives a more complete view of the circumstances surrounding each event by enabling the investigation of how weather may affect the occurrence or character of occurrences.
 
 ### Data Augmentation and Analysis
-By enriching the incident data with geographic and weather information, the project facilitates a multifaceted analysis of public safety incidents. Analysts can explore patterns such as the frequency of certain types of incidents in specific locations, times of day, days of the week, or under certain weather conditions. This augmented dataset supports a wide range of analyses—from spatial distribution of incidents across different parts of town to temporal patterns in relation to weather conditions—offering insights that can inform public safety strategies and resource deployment.
+Through the incorporation of weather and geographic data into the event data, the project enables a comprehensive examination of public safety situations. Patterns such as the frequency of particular incidences in particular areas, at particular times of day, on particular days of the week, or in particular weather conditions can be investigated by analysts. The spatial distribution of occurrences across the town and temporal trends in relation to weather conditions are just two examples of the many studies that may be supported by this enhanced dataset, providing insights that help guide the deployment of resources and public safety policies.
 
-This process exemplifies how combining data from various sources, including API-driven external datasets, can significantly enhance the value of the original data, providing a comprehensive understanding of incidents for more informed decision-making.
+This procedure shows how merging data from several sources—including external datasets controlled by APIs—can greatly increase the original data's value and give decision-makers a more thorough picture of situations.
 
 ## Tools and Libraries Used
 
-This project leverages a variety of tools and Python libraries to process, enrich, and analyze incident report data. Below is a brief overview of each component and its role in the project:
+This project processes, enriches, and analyses incident report data using a range of Python packages and tools. An outline of each element and its function in the project is provided below:
 
-- **argparse**: Used for parsing command-line options and arguments. This library facilitates the user interface for running the script with specific input parameters.
+- **argparse**: used to parse arguments and options from the command line. This library makes it easier to run the script with particular input parameters through the user interface.
 
 - **urllib.request**: Provides an interface for fetching data from the web. It's used in this project to download PDF files containing incident reports from specified URLs.
 
@@ -125,13 +125,24 @@ This project leverages a variety of tools and Python libraries to process, enric
 
 Each of these components plays a vital role in the project's ability to process raw data, enrich it with additional context, and prepare it for a comprehensive analysis.
 
-For your README, here's how you could describe running the tests and provide an overview of each test function:
 
-```markdown
+## Bugs and Assumptions
+
+### Assumptions:
+- I have added "Norman, OK" to addresses that could not be geocoded directly in order to determine the side of town. This method provides the geocoding API with more context, which raises the likelihood of successful geocoding.
+- When even adding "Norman, OK" would not yield latitude or longitude, I used regex to extract the cardinal directions (if any) straight from the address. For instance, the side of town for an address like "1122 24TH AVE SW" would be determined by extracting the "SW" cardinal direction using regex.
+- It is assumed that center of Norman, Oklahoma, is located at (35.220833, -97.443611). Geographic coordinates are used to determine the side of town, with reference to this place.
+- The element is indicated as "Could not determine" if the side of town cannot be determined by either regex extraction or geocoding. As a result, the inability to determine the exact location of these incidences will prevent the calculation of the weather.
+
+### Bugs:
+- **Geocoding Limitations**: Accurate latitude and longitude readings may not always be obtained by attaching "Norman, OK" to addresses for geocoding, particularly for non-standard or recently constructed addresses.
+- **Regex Limitations**: It is assumed that such indications are present and appropriately indicate the side of town when using regex to extract cardinal directions from addresses. This approach might not always work, particularly for addresses that deviate from standard naming conventions or that incorporate the cardinal directions into the street name instead of indicating the location's side of town.
+- **Weather Data Acquisition**: The process of fetching weather data is dependent on successfully geocoding each incident location to obtain accurate latitude and longitude values. For locations that are marked as "Could not determine", weather data will not be fetched, which might limit the analysis of environmental factors on incident patterns.
+- **Cost of Using Google Maps API** : Utilizing the Google Maps API for geocoding addresses is financially burdensome due to its pricing model. Multiple accesses or extensive use of the API can result in significant costs, which may limit the frequency or scale at which data can be collected and updated.
+
 ## Testing Instructions
-
 When you wanna make sure everything's running like it should, just pop into your virtual environment and hit this up:
-
+```markdown
 ```bash
 pipenv run python -m pytest
 ```
@@ -141,10 +152,10 @@ It'll run through all the checks to make sure the script's functionality is perf
 ## Test Overview
 
 ### `test_calculate_day_of_week`
-This test verifies that the `calculate_day_of_week` function correctly calculates the day of the week for each date in the DataFrame, ensuring Sunday=1 through Saturday=7.
+This test verifies that the `calculate_day_of_week` function correctly calculates the day of the week for each date in the DataFrame, ensuring Sunday equals 1 through Saturday equals 7.
 
 ### `test_calculate_incident_rank`
-Tests the `calculate_incident_rank` function to ensure it correctly assigns ranks based on the frequency of incident natures. Incidents with the same nature should receive the same rank, with more frequent natures receiving a lower rank number.
+Tests the `calculate_incident_rank` function to ensure it correctly assigns ranks based on the frequency of incident natures. Incidents with the same nature should receive the same rank, with more frequent natures receiving a lower rank number (eg:- 1,2).
 
 ### `test_calculate_time_of_day`
 Checks the `calculate_time_of_day` function to ensure it properly extracts and assigns the hour of the day from the 'Date/Time' column in the DataFrame. This test confirms that the time of day is correctly captured as a numerical hour.
@@ -161,6 +172,8 @@ Tests the `calculate_emsstat` function to confirm it correctly identifies EMS-re
 ### `test_side_of_town`
 This test verifies the `side_of_town` function, ensuring that it accurately determines the side of town for each location in the DataFrame based on latitude and longitude. It uses predefined locations to test if the function assigns the correct cardinal direction or side of town.
 
+### `test_fetch_weather_code_for_df`
+This test verifies the `fetch_weather_code_for_df` function by checking if the Historical Weather Data is correctly accessed and processed to obtain the WMO weather codes, which are then accurately appended to the dataframe. It ensures that the function can handle real-world data inputs and consistently produce the correct weather classification based on the specified dates and locations.
 
 These tests collectively ensure that each component of the script functions as expected, covering key functionalities from processing incident data to augmenting it with additional insights such as incident ranks, day of the week, and geographical information.
 ```
