@@ -143,7 +143,6 @@ Each of these components plays a vital role in the project's ability to process 
 ## Testing Instructions
 When you wanna make sure everything's running like it should, just pop into your virtual environment and hit this up:
 ```markdown
-```bash
 pipenv run python -m pytest
 ```
 
