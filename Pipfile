@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyarrow = "*"
+pandas = "*"
+pymupdf = "*"
+pypdf2 = "*"
+requests = "*"
+pip = "*"
+pypdf = "*"
+pytest = "*"
+geopy = "*"
+geocoder = "*"
+openmeteo-requests = "*"
+requests-cache = "*"
+retry-requests = "*"
+numpy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

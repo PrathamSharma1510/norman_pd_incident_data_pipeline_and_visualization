@@ -1,0 +1,327 @@
+Location	Day of the Week	Time of Day	Location Rank	WMO Code	Side of Town	Incident Rank	Nature	EMSSTAT
+4TH/SUNNYLANE	6	0	52	3.0	S	18	MVA Non Injury	False
+12TH AVE NE / SONOMA PARK DR	6	0	52	3.0	NE	1	Traffic Stop	False
+1600 ANN BRANDEN BLVD	6	0	52	3.0	SE	4	Disturbance/Domestic	False
+500 OKMULGEE ST	6	0	52	3.0	SE	1	Traffic Stop	False
+1016 E LINDSEY ST	6	0	52	3.0	SE	1	Traffic Stop	False
+2000 ANN BRANDEN BLVD	6	0	52	3.0	SE	2	Transfer/Interfacility	True
+N FLOOD AVE / W ROCK CREEK RD	6	0	52	3.0	NW	1	Traffic Stop	False
+3300 MARSHALL AVE	6	1	52	3.0	S	48	Fire Smoke Investigation	False
+1115 W LINDSEY ST	6	1	52	3.0	SW	1	Traffic Stop	False
+48TH AVE NW / KATHY LYNN DR	6	1	52	2.0	W	1	Traffic Stop	False
+1392 W LINDSEY ST	6	1	52	3.0	SW	1	Traffic Stop	False
+208 W TIMBERDELL RD	6	1	52	3.0	S	1	Traffic Stop	False
+907 W LINDSEY ST	6	1	52	3.0	SW	1	Traffic Stop	False
+N FLOOD AVE / 24TH AVE NW	6	1	52	2.0	NW	1	Traffic Stop	False
+2960 CLASSEN BLVD	6	1	52	3.0	SE	7	Trespassing	False
+1622 ALAMEDA ST	6	1	52	3.0	E	1	Traffic Stop	False
+769 ASP AVE	6	1	14	3.0	S	4	Welfare Check	False
+1523 MELROSE DR	6	1	14	3.0	W	18	Unconscious/Fainting	True
+1523 MELROSE DR	6	1	14	3.0	W	3	Falls	True
+2741 CLASSEN BLVD	6	1	52	3.0	SE	1	Traffic Stop	False
+3300 HEALTHPLEX PKWY	6	1	2	3.0	W	7	Trespassing	False
+576 S UNIVERSITY BLVD	6	1	52	3.0	S	1	Traffic Stop	False
+400 26TH AVE NW	6	2	8	2.0	W	10	Alarm	False
+209 CHALMETTE DR	6	2	8	2.0	E	7	Trespassing	False
+2556 CLASSEN BLVD	6	2	52	2.0	SE	32	Alarm Holdup/Panic	False
+1150 ALAMEDA ST	6	2	4	2.0	E	11	Sick Person	True
+1150 ALAMEDA ST	6	2	4	2.0	E	11	Sick Person	True
+1150 ALAMEDA ST	6	2	4	2.0	E	21	Public Intoxication	True
+1150 ALAMEDA ST	6	2	4	2.0	E	21	Public Intoxication	True
+800 CANADIAN TRAILS DR	6	3	52	2.0	S	21	Public Assist	False
+2815 MONITOR AVE	6	3	52	2.0	S	11	Larceny	False
+2901 OAK TREE AVE	6	3	4	2.0	SE	11	Sick Person	True
+2901 OAK TREE AVE	6	3	4	2.0	SE	11	Sick Person	True
+3601 N FLOOD AVE	6	3	52	3.0	NW	7	Trespassing	False
+604 RIDGE LAKE BLVD	6	3	52	2.0	E	10	Alarm	False
+3300 HEALTHPLEX PKWY	6	4	2	1.0	W	2	Transfer/Interfacility	True
+1544 OK-9	6	4	52	1.0	SW	32	Chest Pain	True
+400 26TH AVE NW	6	4	8	1.0	W	18	Burglary	False
+202 WOODCREST DR	6	4	52	1.0	N	21	Harassment / Threats Report	False
+313 POTOMAC DR	6	4	52	1.0	W	10	Alarm	False
+2600 W ROBINSON ST	6	5	52	0.0	W	7	Trespassing	False
+909 24TH AVE SW	6	5	14	0.0	SW	37	Allergies/Envenomations	True
+909 24TH AVE SW	6	5	14	0.0	SW	37	Allergies/Envenomations	True
+715 MONNETT AVE	6	5	52	0.0	SE	37	Noise Complaint	False
+E GRAY ST / N JONES AVE	6	5	14	0.0	N	18	MVA Non Injury	False
+800 LEXINGTON ST	6	5	14	0.0	N	14	Supplement Report	False
+E GRAY ST / N JONES AVE	6	5	14	0.0	N	21	Public Assist	False
+1507 W LINDSEY ST	6	6	52	0.0	SW	48	Found Item	False
+418 IOWA ST	6	6	52	0.0	NW	21	Fraud	False
+2550 W FRANKLIN RD	6	7	8	0.0	NW	2	Transfer/Interfacility	True
+3617 24TH AVE SE	6	7	52	0.0	SE	18	Burglary	False
+1001 DRAKE DR	6	7	52	0.0	SE	21	Public Assist	False
+E DAWS ST / N CRAWFORD AVE	6	7	52	0.0	N	4	Welfare Check	False
+1900 RENAISSANCE DR	6	7	52	0.0	SE	48	Assault	False
+1776 E ROBINSON ST	6	7	14	0.0	E	18	Unconscious/Fainting	True
+1776 E ROBINSON ST	6	7	14	0.0	E	18	Unconscious/Fainting	True
+4023 N FLOOD AVE	6	7	52	0.0	NW	4	Welfare Check	False
+1002 N PORTER AVE	6	7	52	0.0	N	4	Welfare Check	False
+1111 24TH AVE SW	6	7	52	0.0	SW	21	Public Assist	False
+2370 N FLOOD AVE	6	7	52	0.0	NW	1	Traffic Stop	False
+MAIN ST	6	7	52	0.0	W	11	Larceny	False
+151 W BROOKS AVE	6	7	52	0.0	S	16	Stand By EMS	True
+1124 N PORTER AVE	6	7	52	0.0	N	10	Alarm	False
+1508 DAKOTA ST	6	8	52	1.0	W	4	Welfare Check	False
+1201 ALAMEDA ST	6	8	14	1.0	E	6	Contact a Subject	False
+2900 W LINDSEY ST	6	8	52	1.0	SW	21	Fraud	False
+E CEDAR LANE RD / 48TH AVE SE	6	8	52	0.0	SE	48	Animal Livestock	False
+2555 HEMPHILL DR	6	8	52	1.0	W	21	Follow Up	False
+3263 CLASSEN BLVD	6	8	52	1.0	SE	18	Burglary	False
+511 156TH AVE NE	6	8	14	0.0	E	16	Animal Trapped	False
+216 W HADDOCK ST	6	8	52	1.0	N	14	Supplement Report	False
+561 MERCHANT DR	6	8	52	1.0	W	14	Supplement Report	False
+1601 MCGEE DR	6	8	52	1.0	SW	6	Contact a Subject	False
+3104 WOODCREST CREEK DR	6	8	14	1.0	N	48	Extra Patrol	False
+4420 132ND AVE SE	6	8	52	0.0	E	21	Harassment / Threats Report	False
+511 156TH AVE NE	6	8	14	0.0	E	16	Animal Trapped	False
+1005 W BROOKS ST	6	9	52	0.0	SW	21	Parking Problem	False
+901 N PORTER AVE	6	9	1	0.0	N	2	Transfer/Interfacility	True
+400 26TH AVE NW	6	9	8	0.0	W	14	Supplement Report	False
+911 W MAIN ST	6	9	14	0.0	W	21	Runaway or Lost Child	False
+901 N PORTER AVE	6	9	1	0.0	N	2	Transfer/Interfacility	True
+6665 INTERSTATE DR	6	9	52	0.0	NW	9	Suspicious	False
+N LAHOMA AVE / W HUGHBERT ST	6	9	52	0.0	NW	32	Motorist Assist	False
+2718 OSAGE WAY	6	9	52	0.0	NE	14	Supplement Report	False
+12TH AVE SE / E STATE HWY 9 HWY	6	9	52	0.0	SE	6	Contact a Subject	False
+209 CHALMETTE DR	6	9	8	0.0	E	37	Open Door/Premises Check	False
+4100 N FLOOD AVE	6	9	52	0.0	NW	7	Fire Alarm	False
+4019 N FLOOD AVE	6	9	52	0.0	NW	10	Alarm	False
+201 REED AVE	6	9	8	0.0	E	7	Trespassing	False
+2601 SUMMIT CROSSING PKWY	6	10	52	0.0	E	48	Vandalism	False
+1330 12TH AVE SE	6	10	14	0.0	SE	32	Chest Pain	True
+1330 12TH AVE SE	6	10	14	0.0	SE	32	Chest Pain	True
+301 TRIAD VILLAGE DR	6	10	4	0.0	E	21	Heart Problems/AICD	True
+301 TRIAD VILLAGE DR	6	10	4	0.0	E	21	Heart Problems/AICD	True
+2500 MEADOWOOD BLVD	6	10	52	0.0	E	21	Parking Problem	False
+1906 FILLMORE AVE	6	10	14	0.0	SW	21	Headache	True
+1906 FILLMORE AVE	6	10	14	0.0	SW	21	Headache	True
+930 ED NOBLE DR	6	10	14	0.0	SW	14	Supplement Report	False
+113 CRESTLAND DR	6	10	14	0.0	E	37	Breathing Problems	True
+113 CRESTLAND DR	6	10	14	0.0	E	37	Breathing Problems	True
+W IMHOFF RD / JENKINS AVE	6	10	52	0.0	SW	18	MVA Non Injury	False
+300 W IMHOFF RD	6	10	52	0.0	SW	16	Stand By EMS	True
+215 N PONCA AVE, NORMAN	6	10	14	0.0	NE	21	Follow Up	False
+250 N COCKREL AVE	6	10	14	0.0	NE	37	Mutual Aid	False
+315 WHITE ST	6	10	52	0.0	S	7	Fire Alarm	False
+443 W GRAY ST	6	10	52	0.0	W	9	Suspicious	False
+1330 ALAMEDA ST	6	10	14	0.0	E	3	Falls	True
+1330 ALAMEDA ST	6	10	14	0.0	E	3	Falls	True
+NANTUCKET BLVD / N PORTER AVE	6	10	52	0.0	N	9	Suspicious	False
+3301 W TECUMSEH RD	6	10	52	0.0	NW	21	Fraud	False
+N FLOOD AVE / W TONHAWA ST	6	10	52	0.0	W	6	Contact a Subject	False
+E TECUMSEH RD / 48TH AVE NE	6	10	52	0.0	NE	21	Animal at Large	False
+809 BRITTANY CT	6	10	52	0.0	W	48	Animal Dead	False
+1810 VANESSA DR	6	11	52	0.0	E	21	Animal Injured	False
+I35 SB OFF RAMP 110B RAMP / W ROBINSON ST	6	11	52	0.0	W	14	Check Area	False
+225 INTERSTATE DR	6	11	52	0.0	NW	11	Larceny	False
+ALAMEDA ST / TRIAD VILLAGE DR	6	11	52	0.0	E	1	Traffic Stop	False
+1014 DRAKE DR	6	11	52	0.0	SE	4	Disturbance/Domestic	False
+3651 CLASSEN BLVD	6	11	52	0.0	SE	21	Animal at Large	False
+N PETERS AVE / E MOSIER ST	6	11	52	0.0	N	9	Suspicious	False
+1427 CHERRY STONE ST	6	11	52	0.0	SW	16	Animal Trapped	False
+901 N PORTER AVE	6	11	1	0.0	N	2	Transfer/Interfacility	True
+2500 JENKINS AVE	6	11	52	0.0	S	16	Stand By EMS	True
+104 W DALE ST	6	11	52	0.0	N	6	Contact a Subject	False
+3300 HEALTHPLEX PKWY	6	11	2	0.0	W	7	Fire Alarm	False
+3860 24TH AVE NE	6	12	52	0.0	NE	4	Disturbance/Domestic	False
+1122 24TH AVE SW	6	12	14	0.0	SW	3	Falls	True
+1122 24TH AVE SW	6	12	14	0.0	SW	3	Falls	True
+CLASSEN BLVD / E CEDAR LANE RD	6	12	52	0.0	SE	21	Animal at Large	False
+2500 S JENKINS AVE	6	12	52	0.0	S	16	Stand By EMS	True
+901 N PORTER AVE	6	12	1	0.0	N	2	Transfer/Interfacility	True
+3212 POCASSET CIR	6	12	52	0.0	N	16	Animal Trapped	False
+808 HAWKS NEST DR	6	12	52	0.0	S	7	Fire Alarm	False
+3104 WOODCREST CREEK DR	6	12	14	0.0	N	21	Animal at Large	False
+1226 CLASSEN BLVD	6	12	14	0.0	SE	9	Suspicious	False
+156TH AVE SE / STATE HWY 9 HWY	6	12	52	0.0	E	32	Motorist Assist	False
+108 E DALE ST	6	12	14	0.0	N	37	Fire Residential	True
+108 E DALE ST	6	12	14	0.0	N	37	Fire Residential	True
+3908 SPARKLE ST	6	12	14	0.0	NW	21	Headache	True
+3908 SPARKLE ST	6	12	14	0.0	NW	21	Headache	True
+PAGE CIR / PAGE ST	6	12	52	0.0	S	14	Check Area	False
+814 WOODS AVE	6	12	14	0.0	NW	4	Disturbance/Domestic	False
+814 WOODS AVE	6	12	14	0.0	NW	4	Disturbance/Domestic	False
+910 EAGLEROCK LN	6	12	14	0.0	N	3	Falls	True
+910 EAGLEROCK LN	6	12	14	0.0	N	3	Falls	True
+209 CHALMETTE DR	6	13	8	0.0	E	7	Trespassing	False
+2735 CABIN RD	6	13	52	0.0	E	32	Animal Complaint	False
+1214 CLEARWATER DR	6	13	52	0.0	SE	6	Contact a Subject	False
+1400 24TH AVE NW	6	13	52	0.0	NW	11	Larceny	False
+3954 CLASSEN BLVD	6	13	52	0.0	SE	1	Traffic Stop	False
+2550 W FRANKLIN RD	6	13	8	0.0	NW	37	Overdose/Poisoning	True
+2550 W FRANKLIN RD	6	13	8	0.0	NW	37	Overdose/Poisoning	True
+769 ASP AVE	6	13	14	0.0	S	48	Missing Person	False
+2081 24TH AVE NW	6	13	52	0.0	NW	4	Welfare Check	False
+601 12TH AVE NE	6	13	52	0.0	E	4	Welfare Check	False
+1670 N FLOOD AVE	6	13	52	0.0	NW	1	Traffic Stop	False
+2550 MOUNT WILLIAMS DR	6	13	14	0.0	NW	11	Larceny	False
+1210 W ROBINSON ST	6	13	52	0.0	NW	1	Traffic Stop	False
+123 W ROCK CREEK RD	6	13	52	0.0	N	37	COP DDACTS	False
+710 DEANS ROW AVE	6	13	52	0.0	S	18	Burglary	False
+809 N FINDLAY AVE	6	13	14	0.0	NE	7	Fire Alarm	False
+901 N PORTER AVE	6	13	1	0.0	N	2	Transfer/Interfacility	True
+809 N FINDLAY AVE	6	13	14	0.0	NE	7	Fire Alarm	False
+2900 W ROBINSON ST	6	13	52	0.0	W	4	Welfare Check	False
+1231 24TH AVE NE	6	13	52	0.0	NE	37	COP DDACTS	False
+1226 CLASSEN BLVD	6	13	14	0.0	SE	7	Trespassing	False
+500 EMERALD WAY	6	13	52	0.0	S	21	Parking Problem	False
+1550 24TH AVE NW	6	13	14	0.0	NW	11	Larceny	False
+2818 CLASSEN BLVD	6	13	14	0.0	SE	37	Hemorrhage/Lacerations	True
+2818 CLASSEN BLVD	6	13	14	0.0	SE	37	Hemorrhage/Lacerations	True
+800 N PETERS AVE	6	13	52	0.0	N	37	Mutual Aid	False
+125 VICKSBURG AVE	6	13	52	0.0	E	6	Contact a Subject	False
+761 JENKINS AVE	6	13	52	0.0	S	21	Public Intoxication	False
+968 24TH AVE NE	6	14	52	0.0	E	1	Traffic Stop	False
+BNSF RR / W ACRES ST	6	14	52	0.0	NW	14	Check Area	False
+1818 W LINDSEY ST	6	14	52	1.0	SW	2	Transfer/Interfacility	True
+2330 CLASSEN BLVD	6	14	52	1.0	SE	1	Traffic Stop	False
+2841 CLASSEN BLVD	6	14	52	1.0	SE	48	COP Problem Solving	False
+2536 CLASSEN BLVD	6	14	52	1.0	SE	1	Traffic Stop	False
+211 E MAIN ST	6	14	14	0.0	NE	3	Falls	True
+211 E MAIN ST	6	14	14	0.0	NE	3	Falls	True
+E LINDSEY ST / JENKINS AVE	6	14	52	1.0	S	6	Contact a Subject	False
+901 N PORTER AVE	6	14	1	0.0	N	2	Transfer/Interfacility	True
+3402 CRAMPTON GAP WAY	6	14	52	0.0	N	7	Fire Alarm	False
+3015 TULIP CIR	6	14	52	0.0	E	21	Animal Injured	False
+1809 STUBBEMAN AVE	6	14	14	0.0	N	48	Fight	False
+2611 BRIARCLIFF	6	14	52	0.0	NE	48	Animal Vicious	False
+ARKANSAS ST / 12TH AVE SE	6	14	8	1.0	SE	13	MVA With Injuries	True
+ARKANSAS ST / 12TH AVE SE	6	14	8	1.0	SE	13	MVA With Injuries	True
+ARKANSAS ST / 12TH AVE SE	6	14	8	1.0	SE	18	MVA Non Injury	True
+PARSONS ST / CHAUTAUQUA AVE	6	14	52	1.0	S	21	Parking Problem	False
+1550 24TH AVE NW	6	14	14	0.0	NW	11	Larceny	False
+1616 ALAMEDA ST	6	15	52	1.0	E	4	Welfare Check	False
+9850 E BOYD ST	6	15	52	0.0	E	16	Animal Trapped	False
+1502 E LINDSEY ST	6	15	52	1.0	SE	32	Animal Complaint	False
+E ROBINSON ST / N PORTER AVE	6	15	52	3.0	N	4	Welfare Check	False
+3300 HEALTHPLEX PKWY	6	15	2	1.0	W	2	Transfer/Interfacility	True
+N FLOOD AVE / W MAIN ST	6	15	52	1.0	W	9	Suspicious	False
+3300 HEALTHPLEX PKWY	6	15	2	1.0	W	2	Transfer/Interfacility	True
+809 BILOXI DR	6	15	52	1.0	SE	21	Runaway or Lost Child	False
+2808 DEWEY AVE	6	15	52	1.0	S	21	Harassment / Threats Report	False
+516 DALTON LN	6	15	52	1.0	S	32	Hit and Run	False
+201 REED AVE	6	15	8	3.0	E	4	Disturbance/Domestic	False
+1109 N PORTER AVE	6	15	52	3.0	N	21	Animal Injured	False
+2900 JENKINS AVE	6	15	14	1.0	S	16	Stand By EMS	True
+736 NANCY LYNN TER	6	15	52	1.0	SW	14	Check Area	False
+215 N PONCA AVE, NORMAN	6	15	14	3.0	NE	21	Follow Up	False
+2200 W MAIN ST	6	15	14	1.0	W	48	Stroke	True
+2200 W MAIN ST	6	15	14	1.0	W	11	Sick Person	True
+1719 24TH AVE SW	6	16	14	0.0	SW	18	Unconscious/Fainting	True
+1719 24TH AVE SW	6	16	14	0.0	SW	18	Unconscious/Fainting	True
+2552 WEYMOUTH WAY	6	16	52	0.0	N	9	Suspicious	False
+333 E BROOKS ST	6	16	14	0.0	S	10	Alarm	False
+1501 72ND AVE NE	6	16	52	0.0	E	16	Animal Trapped	False
+1809 STUBBEMAN AVE	6	16	14	0.0	N	48	COP Relationships	False
+24TH AVE NW / W MAIN ST	6	16	52	0.0	W	6	Contact a Subject	False
+3099 60TH AVE NW	6	16	52	0.0	NW	1	Traffic Stop	False
+250 N COCKREL AVE	6	16	14	0.0	NE	6	Contact a Subject	False
+DRAKE DR / CLASSEN BLVD	6	16	52	0.0	SE	18	MVA Non Injury	False
+109 W GRAY ST	6	16	14	0.0	NW	3	Falls	True
+109 W GRAY ST	6	16	14	0.0	NW	3	Falls	True
+4511 60TH AVE NW	6	16	52	0.0	NW	1	Traffic Stop	False
+201 REED AVE	6	16	8	0.0	E	7	Trespassing	False
+2901 OAK TREE AVE	6	16	4	0.0	SE	3	Falls	True
+2901 OAK TREE AVE	6	16	4	0.0	SE	3	Falls	True
+2710 SHORERIDGE AVE	6	16	52	0.0	SW	37	Open Door/Premises Check	False
+301 TRIAD VILLAGE DR	6	16	4	0.0	E	3	Falls	True
+301 TRIAD VILLAGE DR	6	16	4	0.0	E	3	Falls	True
+333 INTERSTATE DR	6	17	52	0.0	NW	11	Larceny	False
+2619 QUANAH PARKER TRL	6	17	52	0.0	NE	4	Disturbance/Domestic	False
+1030 MISSOURI ST	6	17	52	0.0	SE	32	Animal Complaint	False
+1243 ALAMEDA ST	6	17	52	0.0	E	1	Traffic Stop	False
+3301 W MAIN ST	6	17	52	0.0	W	21	Fraud	False
+911 W MAIN ST	6	17	14	0.0	W	6	Contact a Subject	False
+RIDGE LAKE BLVD / SUMMIT CROSSING PKWY	6	17	52	0.0	E	32	Hit and Run	False
+930 ED NOBLE DR	6	17	14	0.0	SW	14	Supplement Report	False
+333 E BROOKS ST	6	17	14	0.0	S	14	Check Area	False
+1201 ALAMEDA ST	6	17	14	0.0	E	1	Traffic Stop	False
+351 E ROBINSON ST	6	17	52	0.0	N	7	Trespassing	False
+1216 36TH AVE NW	6	17	52	0.0	W	1	Traffic Stop	False
+7296 E FRANKLIN RD	6	17	52	0.0	NE	1	Traffic Stop	False
+901 N PORTER AVE	6	17	1	0.0	N	2	Transfer/Interfacility	True
+605 PEREGRINE DR	6	17	52	0.0	S	11	Larceny	False
+317 WHITE ST	6	17	52	0.0	S	7	Trespassing	False
+4309 MONTICELLO RD	6	17	52	0.0	W	6	Contact a Subject	False
+901 N PORTER AVE	6	17	1	0.0	N	48	Escort/Transport	False
+215 N PONCA AVE	6	17	52	0.0	NE	21	Harassment / Threats Report	False
+4803 HOSHALL AVE	6	17	52	0.0	NE	1	Traffic Stop	False
+131 24TH AVE NW	6	18	52	0.0	W	1	Traffic Stop	False
+E BOYD ST / CLASSEN BLVD	6	18	52	0.0	SE	4	Welfare Check	False
+901 N PORTER AVE	6	18	1	0.0	N	4	Welfare Check	False
+1321 N PORTER AVE	6	18	52	0.0	N	1	Traffic Stop	False
+SHILOH DR / BRANDON CIR	6	18	52	0.0	E	1	Traffic Stop	False
+N FLOOD AVE / W ROBINSON ST	6	18	52	0.0	NW	32	Hit and Run	False
+401 W MAIN ST	6	18	52	0.0	SW	10	Alarm	False
+1650 24TH AVE NW	6	18	52	0.0	NW	7	Fire Alarm	False
+15700 E STATE HWY 9 HWY	6	18	14	0.0	E	11	Sick Person	True
+15700 E STATE HWY 9 HWY	6	18	14	0.0	E	11	Sick Person	True
+7550 VISTA SPRINGS DR	6	18	52	0.0	E	32	Alarm Holdup/Panic	False
+101 N PORTER AVE	6	18	52	0.0	NE	21	Runaway or Lost Child	False
+1820 LEGACY PARK DR	6	18	52	0.0	SW	1	Traffic Stop	False
+4000 THUNDERBIRD ST	6	18	14	0.0	NW	37	Convulsion/Seizure	True
+4000 THUNDERBIRD ST	6	18	14	0.0	NW	37	Convulsion/Seizure	True
+1673 24TH AVE NW	6	18	52	0.0	NW	9	Suspicious	False
+QUAIL CREEK DR / E STATE HWY 9 HWY	6	19	2	0.0	E	13	MVA With Injuries	True
+QUAIL CREEK DR / E STATE HWY 9 HWY	6	19	2	0.0	E	13	MVA With Injuries	True
+QUAIL CREEK DR / E STATE HWY 9 HWY	6	19	2	0.0	E	13	MVA With Injuries	True
+QUAIL CREEK DR / E STATE HWY 9 HWY	6	19	2	0.0	E	13	MVA With Injuries	True
+QUAIL CREEK DR / E STATE HWY 9 HWY	6	19	2	0.0	E	13	MVA With Injuries	True
+QUAIL CREEK DR / E STATE HWY 9 HWY	6	19	2	0.0	E	13	MVA With Injuries	True
+201 W GRAY ST	6	19	52	0.0	NW	21	Follow Up	False
+1411 REBECCA LN	6	19	52	0.0	SW	4	Disturbance/Domestic	False
+744 ELM AVE	6	19	52	0.0	S	7	Fire Alarm	False
+207 E MAIN ST	6	19	14	0.0	NE	32	Alarm Holdup/Panic	False
+901 N PORTER AVE	6	19	1	0.0	N	14	Check Area	False
+207 E MAIN ST	6	19	14	0.0	NE	21	Public Intoxication	False
+817 BILOXI DR	6	20	52	0.0	SE	4	Disturbance/Domestic	False
+2815 DEWEY AVE	6	20	52	0.0	S	37	Noise Complaint	False
+1050 RAMBLING OAKS DR	6	20	14	0.0	W	21	Heart Problems/AICD	True
+1050 RAMBLING OAKS DR	6	20	14	0.0	W	21	Heart Problems/AICD	True
+1400 12TH AVE SE	6	20	52	0.0	SE	7	Fire Alarm	False
+800 LEXINGTON ST	6	20	14	0.0	N	4	Disturbance/Domestic	False
+901 N PORTER AVE	6	20	1	0.0	N	2	Transfer/Interfacility	True
+3325 CHARDONNAY LN	6	20	52	0.0	N	10	Alarm	False
+401 12TH AVE SE	6	20	52	0.0	E	4	Welfare Check	False
+901 N PORTER AVE	6	21	1	0.0	N	2	Transfer/Interfacility	True
+2900 JENKINS AVE	6	21	14	0.0	S	16	Stand By EMS	True
+700 S TELEPHONE RD	6	21	52	0.0	N	2	Transfer/Interfacility	True
+731 W MAIN ST	6	21	52	0.0	W	7	Trespassing	False
+3001 PHEASANT RUN RD	6	21	4	0.0	NW	11	Sick Person	True
+3001 PHEASANT RUN RD	6	21	4	0.0	NW	11	Sick Person	True
+1320 COLLEGE AVE	6	21	52	0.0	S	7	Fire Alarm	False
+1412 LAKECREST DR	6	21	52	0.0	NE	4	Disturbance/Domestic	False
+901 N PORTER AVE	6	21	1	0.0	N	2	Transfer/Interfacility	True
+W ROBINSON ST / N INTERSTATE DR	6	21	52	0.0	W	48	Road Rage	False
+W LINDSEY ST / MCGEE DR	6	22	52	0.0	SW	1	Traffic Stop	False
+RENAISSANCE DR / CLASSEN BLVD	6	22	52	0.0	SE	21	Animal Injured	False
+24TH AVE SW / BEVERLY HILLS ST	6	22	52	0.0	SW	1	Traffic Stop	False
+901 N PORTER AVE	6	22	1	0.0	N	2	Transfer/Interfacility	True
+566 BUCHANAN AVE	6	22	52	0.0	S	10	Alarm	False
+12TH AVE NE / E ROBINSON ST	6	22	52	0.0	NE	48	Drunk Driver	False
+3001 PHEASANT RUN RD	6	22	4	0.0	NW	4	Welfare Check	False
+1111 OAK TREE AVE	6	22	52	0.0	S	6	Contact a Subject	False
+960 ED NOBLE DR	6	22	52	0.0	SW	9	Suspicious	False
+462 E BOYD ST	6	22	52	0.0	SE	1	Traffic Stop	False
+2409 GLEN OAKS DR	6	22	52	0.0	SE	21	Runaway or Lost Child	False
+1102 E MAIN ST	6	22	52	0.0	E	1	Traffic Stop	False
+627 RANCHO DR	6	23	52	0.0	E	1	Traffic Stop	False
+CLASSEN BLVD / E BROOKS ST	6	23	52	0.0	SE	1	Traffic Stop	False
+N JAMES GARNER AVE / W MAIN ST	6	23	52	0.0	SW	1	Traffic Stop	False
+600 PARKSIDE DR	6	23	52	0.0	W	14	Check Area	False
+1157 24TH AVE NW	6	23	52	0.0	W	1	Traffic Stop	False
+2550 MOUNT WILLIAMS DR	6	23	14	0.0	NW	4	Disturbance/Domestic	False
+BILOXI DR / E BROOKS ST	6	23	52	0.0	SE	32	Motorist Assist	False
+4701 HERITAGE PLACE DR	6	23	52	0.0	W	4	Disturbance/Domestic	False
+1112 E BOYD ST	6	23	52	0.0	SE	48	Loud Party	False
+529 BUCHANAN AVE	6	23	8	0.0	S	37	Assault EMS Needed	True
+529 BUCHANAN AVE	6	23	8	0.0	S	37	Assault EMS Needed	True
+529 BUCHANAN AVE	6	23	8	0.0	S	4	Disturbance/Domestic	True
+1016 26TH AVE NW	6	23	52	0.0	W	7	Fire Alarm	False
+901 N PORTER AVE	6	23	1	0.0	N	9	Suspicious	False
+3001 PHEASANT RUN RD	6	23	4	0.0	NW	18	Burglary	False
+W EUFAULA ST / S SANTA FE AVE	6	23	52	0.0	S	1	Traffic Stop	False
+11401 E INDIAN HILLS RD	6	23	52	0.0	NE	9	Suspicious	False
+3450 CHAUTAUQUA AVE	6	23	52	0.0	S	10	Alarm	False
+3300 HEALTHPLEX PKWY	6	23	2	0.0	W	2	Transfer/Interfacility	True
