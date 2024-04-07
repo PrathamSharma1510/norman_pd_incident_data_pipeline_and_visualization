@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from assignment2.main import (
+from assignment2 import (
     calculate_emsstat,
     extract_nature_column,
     calculate_day_of_week,
@@ -46,13 +46,6 @@ class TestDataAugmentation(unittest.TestCase):
         #values should be same.
         self.assertEqual(expected_wmo_codes, actual_wmo_codes, "The 'WMO Code' values do not match the expected output.")
 
-
-
-
-
-
-
-    
     def test_calculate_incident_rank(self):
         #taken another demo datset for this test
         test_df = pd.DataFrame({

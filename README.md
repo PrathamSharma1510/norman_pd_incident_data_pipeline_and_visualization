@@ -27,7 +27,7 @@ python main.py --urls <path_to_file_with_pdf_urls>
 
 Replace `<path_to_file_with_pdf_urls>` with the path to a text file containing URLs of the PDF files to be processed, one URL per line.
 
-### Example :- 
+ Example :- 
 
 ```
 python main.py --urls pdf_urls.txt
@@ -93,6 +93,7 @@ This procedure shows how merging data from several sources—including external 
 
 ## Tools and Libraries Used
 
+These libraries collectively support the project's aim to process, enrich, and analyze incident report data, transforming raw PDF documents into a rich, multi-dimensional dataset ready for in-depth analysis.
 This project processes, enriches, and analyses incident report data using a range of Python packages and tools. An outline of each element and its function in the project is provided below:
 
 - **argparse**: used to parse arguments and options from the command line. This library makes it easier to run the script with particular input parameters through the user interface.
@@ -117,14 +118,9 @@ This project processes, enriches, and analyses incident report data using a rang
 
 - **requests_cache**: Enables caching of HTTP requests. This reduces the number of repeated requests made to APIs, improving efficiency and reducing latency.
 
-- **retry_requests**: Implements retry logic for HTTP requests, enhancing the robustness of web service calls by retrying failed requests.
-
 - **openmeteo_requests**: A custom implementation (assumed for the context of this explanation) for interacting with the Open-Meteo API, which provides historical weather data necessary for the project.
 
-- **timedelta**: Part of the datetime module, used to represent differences in dates and times (durations). This project utilizes timedelta for time-based calculations and manipulations.
-
 Each of these components plays a vital role in the project's ability to process raw data, enrich it with additional context, and prepare it for a comprehensive analysis.
-
 
 ## Bugs and Assumptions
 
@@ -175,4 +171,4 @@ This test verifies the `side_of_town` function, ensuring that it accurately dete
 This test verifies the `fetch_weather_code_for_df` function by checking if the Historical Weather Data is correctly accessed and processed to obtain the WMO weather codes, which are then accurately appended to the dataframe. It ensures that the function can handle real-world data inputs and consistently produce the correct weather classification based on the specified dates and locations.
 
 These tests collectively ensure that each component of the script functions as expected, covering key functionalities from processing incident data to augmenting it with additional insights such as incident ranks, day of the week, and geographical information.
-```
+
