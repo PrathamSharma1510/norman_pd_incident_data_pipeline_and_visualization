@@ -138,7 +138,6 @@ This will run all tests to ensure the script's functionality is performing corre
 
 A walkthrough video demonstrating the process and visualization can be found here:
 
-[![Walkthrough Video](https://img.youtube.com/vi/caw1qRyKEs0/0.jpg)]
-(https://github.com/PrathamSharma1510/norman_pd_incident_data_pipeline_and_visualization/blob/main/video_demo.mp4))
+([![Watch the video](https://raw.githubusercontent.com/username/repository/branch/path/to/thumbnail.jpg)](https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4))
 
 
