@@ -29,11 +29,11 @@ def extract_incidents_from_pdf(pdf_path):
     i = 0
     while i < len(lines):
         line = lines[i].strip()
-        if '/' in line and ':' in line:  # Likely a 'Date/Time' entry
+        if '/' in line and ':' in line:  
             data['Date/Time'].append(line)
-            i += 1  # Move to the next line for 'Incident Number'
+            i += 1 
             
-            # Ensure subsequent values are captured or set to 'NULL' if not present or if the next record starts
+          
             for field in ['Incident Number', 'Location', 'Nature', 'Incident ORI']:
                 # if field == 'Nature' and 'RAMP' in lines[i].upper():
                 #         data[field].append(lines[i+1].strip() if lines[i+1].strip() else "null")
@@ -44,7 +44,7 @@ def extract_incidents_from_pdf(pdf_path):
                         data[field].append(lines[i].strip() if lines[i].strip() else "")
                     i += 1
                 else:
-                    # If the expected value is missing, append 'NULL' and do not increment 'i'
+                   
                     data[field].append("")
         else:
             # If the line doesn't match the expected start of a new record, increment 'i' to check the next line
@@ -74,7 +74,7 @@ def calculate_location_rank(df):
         location_counts.at[i, 'Rank'] = rank
     
     location_to_rank = pd.Series(location_counts.Rank.values,index=location_counts.Location).to_dict()
-    #using dictionary to map for future usage.
+   
     df['Location Rank'] = df['Location'].map(location_to_rank)
     return df['Location Rank']
 
@@ -120,7 +120,6 @@ def calculate_time_of_day(df):
     return df
 
 
-#extract name from column , Just need to copy from original df.
 def extract_nature_column(df):
     return df['Nature']
 
@@ -141,7 +140,6 @@ def calculate_emsstat(df):
 
 geocode_cache = {}
 def geocode_address_google(address, api_key, append_info="Norman, OK"):
-    # AIzaSyApMAgl_myEP06P6-GHzeTsAYbTdOsMa70
     #if we already have lang and lat just use them and not hit api for it.
     if address in geocode_cache:
         return geocode_cache[address]
@@ -196,7 +194,6 @@ def ensure_geocoding(df, api_key):
     return df
 
 def calculate_compass_bearing(start_point, end_point):
-    # Convert the latitude of both points from degrees to radians
     lat1 = math.radians(start_point[0])
     lat2 = math.radians(end_point[0])
 
@@ -208,16 +205,12 @@ def calculate_compass_bearing(start_point, end_point):
     z=math.sin(lat1) * math.cos(lat2) * math.cos(longitude_difference)
     y = math.cos(lat1) * math.sin(lat2) - z
 
-    # Compute the initial bearing by taking the arctangent of x and y components
     initial_bearing = math.atan2(x, y)
-
-    # Convert the initial bearing from radians to degrees and adjust the angle to be between 0 and 360
     compass_bearing = (math.degrees(initial_bearing) + 360) % 360
     #return of the bearning 
     return compass_bearing
 
 def extract_cardinal_direction(location):
-    #use of re if api fails so we can check from here
     pattern = r'\b(N|S|E|W|NW|NE|SW|SE)\b'
     match = re.search(pattern, location)
     if match:
@@ -248,13 +241,12 @@ def determine_side_of_town(lat, lon):
         return "Could not determine side of town"
 
 def side_of_town(df):
-    """Determine the side of town for each record based on its latitude and longitude."""
     for index, row in df.iterrows():
         lat = row['Latitude']
         lon = row['Longitude']
-        location = row.get('Location', '')  # Get 'Location' if it exists, else default is empty string
+        location = row.get('Location', '')  
 
-        # Check if latitude and longitude are available
+       
         if pd.notna(lat) and pd.notna(lon):
             side = determine_side_of_town(lat, lon)
             # If no valid side found from lat/lon, try to get it from location
@@ -264,13 +256,13 @@ def side_of_town(df):
                     # If we got a cardinal direction, use it
                     df.at[index, 'Side of Town'] = cardinal_direction
                 else:
-                    # No side or direction found, set as could not determine
+                    
                     df.at[index, 'Side of Town'] = "Could not determine"
             else:
                 # Valid side found, assign it
                 df.at[index, 'Side of Town'] = side
         else:
-            # Lat and Lon not available, try to determine side from location directly
+           
             cardinal_direction = extract_cardinal_direction(location)
             if cardinal_direction:
                 df.at[index, 'Side of Town'] = cardinal_direction
@@ -282,17 +274,17 @@ def side_of_town(df):
 
 def fetch_weather_code_for_df(df):
     for index, row in df.iterrows():
-        # Parse 'Date/Time' string to a datetime object with the correct format
+       
         datetime_obj = pd.to_datetime(row['Date/Time'], format='%m/%d/%Y %H:%M')
 
         # Convert datetime object to date string in ISO format for the API request
         start_date = datetime_obj.date().isoformat()
-        # Setup parameters for the API request
+       
         params = {
             "latitude": row['Latitude'],
             "longitude": row['Longitude'],
             "start_date": start_date,
-            "end_date": start_date,  # Ensure this is the day after start_date
+            "end_date": start_date, 
             "hourly": ["weather_code"]
         }
 
@@ -300,11 +292,8 @@ def fetch_weather_code_for_df(df):
         responses = openmeteo.weather_api("https://archive-api.open-meteo.com/v1/archive", params=params)
 
 
-        # Check if responses are available and process them
         if responses:
             response = responses[0]
-            # Assuming 'hourly_weather_code' is specified in the API response
-            # You need to adjust this part based on the actual structure of your response
             hourly_weather_code = response.Hourly().Variables(0).ValuesAsNumpy()
 
             # Example to extract a single weather code, adjust as needed
@@ -314,13 +303,11 @@ def fetch_weather_code_for_df(df):
             else:
                 df.at[index, 'WMO Code'] = None
         else:
-            # print(f"Failed to fetch weather data for index {index}")
             df.at[index, 'WMO Code'] = None
 
     return df['WMO Code']
 
 def download_pdf(url, save_path='/tmp/incident_report.pdf'):
-    """Download PDF from a specified URL to a local file path."""
     headers = {'User-Agent': "Mozilla/5.0"}
     request = urllib.request.Request(url, headers=headers)
     response = urllib.request.urlopen(request)
@@ -350,7 +337,7 @@ def create_augmented_dataframe(all_incidents_df):
 
     # return all_incidents_df
 def main(urls_filename):
-    api_key = 'AIzaSyApMAgl_myEP06P6-GHzeTsAYbTdOsMa70'
+    api_key = "Your API key"
     """Process incident data from multiple PDF URLs listed in a given file."""
     if not os.path.exists('resources'):
         os.makedirs('resources')

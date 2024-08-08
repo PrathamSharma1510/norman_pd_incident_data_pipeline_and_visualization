@@ -117,14 +117,14 @@ def main():
         st.subheader("Augmented Data 📊")
         st.dataframe(st.session_state.augmented_df)
 
-        # Visualizations
+
         st.markdown("## Visualizations 📊")
         if 'selected_types' not in st.session_state:
             # Select the top 4 most frequent incident types initially
             initial_types = st.session_state.augmented_df['Nature'].value_counts().head(4).index.tolist()
             st.session_state.selected_types = initial_types
 
-        # 1. Incident Frequency by Time of Day as a Heatmap
+        # Incident Frequency by Time of Day as a Heatmap
         st.subheader("Incident Frequency by Time of Day 🕒")
         st.write("This heatmap shows the frequency of incidents at different times of the day and days of the week.")
         time_of_day_heatmap = st.session_state.augmented_df.groupby(['Day of Week', 'Time of Day']).size().unstack().fillna(0)
@@ -132,7 +132,7 @@ def main():
         fig.update_layout(title='Incident Frequency by Time of Day', xaxis_title='Hour of the Day', yaxis_title='Day of the Week')
         st.plotly_chart(fig)
 
-        # 2. Incident Types and Their Frequencies
+        # Incident Types and Their Frequencies
         st.subheader("Incident Types and Their Frequencies 📋")
         st.write("This bar chart shows the frequency of different types of incidents.")
         incident_types = st.session_state.augmented_df['Nature'].unique()
@@ -156,7 +156,7 @@ def main():
         else:
             st.write("No geographic data available.")
 
-        # 4. Weather Conditions During Incidents
+        # Weather Conditions During Incidents
         st.subheader("Weather Conditions During Incidents 🌤️")
         st.write("This pie chart shows the distribution of weather conditions during the incidents.")
         weather_counts = st.session_state.augmented_df['WMO Code'].value_counts().reset_index()
@@ -164,7 +164,7 @@ def main():
         fig = px.pie(weather_counts, values='count', names='WMO Code', title='Weather Conditions During Incidents')
         st.plotly_chart(fig)
 
-        # 5. Side of Town Analysis
+        # Side of Town Analysis
         st.subheader("Side of Town Analysis 🏙️")
         st.write("This bar chart shows the number of incidents occurring on different sides of the town.")
         side_counts = st.session_state.augmented_df['Side of Town'].value_counts().reset_index()
@@ -173,13 +173,13 @@ def main():
         fig.update_layout(title='Side of Town Analysis', xaxis_title='Side of Town', yaxis_title='Number of Incidents')
         st.plotly_chart(fig)
 
-        # 6. Correlation Matrix
+        # Correlation Matrix
         show_correlation_matrix(st.session_state.augmented_df)
 
-        # 8. Search and Highlight
+        #  Search and Highlight
         search_and_highlight(st.session_state.augmented_df)
 
-        # 10. Incident Clustering
+        # Incident Clustering
         incident_clustering(st.session_state.augmented_df)
 
 if __name__ == "__main__":
