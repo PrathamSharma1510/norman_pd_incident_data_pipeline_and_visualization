@@ -19,6 +19,9 @@ requests-cache = "*"
 retry-requests = "*"
 numpy = "*"
 streamlit = "*"
+matplotlib = "*"
+plotly = "*"
+seaborn = "*"
 
 [dev-packages]
 

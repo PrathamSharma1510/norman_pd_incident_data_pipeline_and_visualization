@@ -1,4 +1,4 @@
-	Time of Day	Weather	Location Rank	Side of Town	Incident Rank	Nature	EMSSTAT
+Day of the Week	Time of Day	Weather	Location Rank	Side of Town	Incident Rank	Nature	EMSSTAT
 3	0	0.0	8	E	50	Fire Controlled Burn	False
 3	0	0.0	66	W	1	Traffic Stop	False
 3	0	0.0	66	NW	50	Drunk Driver	False
