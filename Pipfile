@@ -18,6 +18,7 @@ openmeteo-requests = "*"
 requests-cache = "*"
 retry-requests = "*"
 numpy = "*"
+streamlit = "*"
 
 [dev-packages]
 

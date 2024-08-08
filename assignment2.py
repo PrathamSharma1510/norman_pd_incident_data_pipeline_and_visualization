@@ -141,6 +141,7 @@ def calculate_emsstat(df):
 
 geocode_cache = {}
 def geocode_address_google(address, api_key, append_info="Norman, OK"):
+    # AIzaSyApMAgl_myEP06P6-GHzeTsAYbTdOsMa70
     #if we already have lang and lat just use them and not hit api for it.
     if address in geocode_cache:
         return geocode_cache[address]
@@ -336,6 +337,7 @@ def read_urls_from_file(filename):
 def create_augmented_dataframe(all_incidents_df):
     augmented_df = pd.DataFrame()
     
+    
     augmented_df['Day of the Week'] = calculate_day_of_week(all_incidents_df)
     augmented_df['Time of Day'] = all_incidents_df['Time of Day'].copy()
     augmented_df['Weather'] = fetch_weather_code_for_df(all_incidents_df)
@@ -348,7 +350,7 @@ def create_augmented_dataframe(all_incidents_df):
 
     return augmented_df
 def main(urls_filename):
-    api_key = "AIzaSyCh28Jy9e30ULUW0crS3-9NtT6khonR0sI" 
+    # apikey
     """Process incident data from multiple PDF URLs listed in a given file."""
     if not os.path.exists('resources'):
         os.makedirs('resources')
