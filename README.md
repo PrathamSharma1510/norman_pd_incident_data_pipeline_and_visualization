@@ -135,6 +135,7 @@ This will run all tests to ensure the script's functionality is performing corre
 - **`test_fetch_weather_code_for_df`**: Ensures the `fetch_weather_code_for_df` function correctly accesses and processes weather data to obtain the WMO weather codes.
 
 ## Walkthrough Video
+[![Watch the video]](https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4)
 
 A walkthrough video demonstrating the process and visualization can be found here:
 
