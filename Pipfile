@@ -22,6 +22,7 @@ streamlit = "*"
 matplotlib = "*"
 plotly = "*"
 seaborn = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
