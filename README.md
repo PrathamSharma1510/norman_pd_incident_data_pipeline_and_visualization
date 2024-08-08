@@ -138,5 +138,6 @@ This will run all tests to ensure the script's functionality is performing corre
 
 A walkthrough video demonstrating the process and visualization can be found here:
 
-[![Walkthrough Video](https://img.youtube.com/vi/your_video_id/maxresdefault.jpg)](https://www.youtube.com/watch?v=your_video_id)
+[![Walkthrough Video](https://img.youtube.com/vi/caw1qRyKEs0/0.jpg)](https://www.youtube.com/watch?v=caw1qRyKEs0 "Watch the video on YouTube")
+
 
