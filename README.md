@@ -7,6 +7,10 @@
 
 This project processes and augments data from incident reports from the Norman, Oklahoma City Police Department. It extracts events from PDF files, uses the Google Maps API to geocode event locations, determines parts of the city for each event based on coordinates, calculates event and location groups, and assigns weather information to the data at each time and event using the Historical Weather API. The goal is to provide improved event insights for further analysis.
 
+## Walkthrough Video
+
+https://github.com/user-attachments/assets/86aa784b-e160-416e-afdb-97a0b329bd2e
+
 ## How to Run the Code
 
 ### Installation Instructions
@@ -133,12 +137,3 @@ This will run all tests to ensure the script's functionality is performing corre
 - **`test_calculate_emsstat`**: Confirms the `calculate_emsstat` function correctly identifies EMS-related incidents.
 - **`test_side_of_town`**: Verifies the `side_of_town` function, ensuring it accurately determines the side of town for each location.
 - **`test_fetch_weather_code_for_df`**: Ensures the `fetch_weather_code_for_df` function correctly accesses and processes weather data to obtain the WMO weather codes.
-
-## Walkthrough Video
-[![Watch the video]](https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4)
-
-A walkthrough video demonstrating the process and visualization can be found here:
-
-https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4
-
-
