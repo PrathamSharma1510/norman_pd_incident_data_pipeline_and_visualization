@@ -7,7 +7,8 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Import your existing functions from assignment2.py
-from assignment2 import extract_incidents_from_pdf, download_pdf
+from assignment2 import extract_incidents_from_pdf, download_pdf, ensure_geocoding, side_of_town, calculate_time_of_day, create_augmented_dataframe
+
 def generate_urls(start_date, end_date):
     base_url = "https://www.normanok.gov/sites/default/files/documents/"
     current_date = start_date
@@ -41,6 +42,9 @@ def main():
     start_date = st.date_input("Start Date", datetime(2024, 7, 1))
     end_date = st.date_input("End Date", datetime(2024, 7, 1))
 
+    if 'all_incidents_df' not in st.session_state:
+        st.session_state.all_incidents_df = pd.DataFrame()
+
     if st.button("Fetch Data"):
         if start_date > end_date:
             st.error("End Date must be after Start Date")
@@ -49,12 +53,27 @@ def main():
         else:
             urls = generate_urls(start_date, end_date)
             all_incidents_df = fetch_data_from_urls(urls)
+            st.session_state.all_incidents_df = all_incidents_df
 
-            if not all_incidents_df.empty:
-                st.write("### Extracted Data")
-                st.dataframe(all_incidents_df)
-            else:
-                st.write("No data extracted.")
+    if not st.session_state.all_incidents_df.empty:
+        st.write("### Extracted Data")
+        st.dataframe(st.session_state.all_incidents_df)
+
+        # Button to augment data
+        if st.button("Augment Data"):
+            with st.spinner('Augmenting data... This might take a few minutes, please stay tight.'):
+                api_key = 'your_api_key_here'  # Replace with your actual API key
+                all_incidents_df = ensure_geocoding(st.session_state.all_incidents_df, api_key)
+                all_incidents_df = side_of_town(all_incidents_df)
+                all_incidents_df = calculate_time_of_day(all_incidents_df)
+                create_augmented_dataframe(all_incidents_df)
+                
+                st.session_state.augmented_df = all_incidents_df
+                st.success('Data augmented successfully!')
+
+    if 'augmented_df' in st.session_state:
+        st.write("### Augmented Data")
+        st.dataframe(st.session_state.augmented_df)
 
 if __name__ == "__main__":
     main()

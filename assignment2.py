@@ -335,22 +335,22 @@ def read_urls_from_file(filename):
         urls = file.read().splitlines()
     return urls
 def create_augmented_dataframe(all_incidents_df):
-    augmented_df = pd.DataFrame()
+    # augmented_df = pd.DataFrame()
     
     
-    augmented_df['Day of the Week'] = calculate_day_of_week(all_incidents_df)
-    augmented_df['Time of Day'] = all_incidents_df['Time of Day'].copy()
-    augmented_df['Weather'] = fetch_weather_code_for_df(all_incidents_df)
-    augmented_df['Location Rank'] = calculate_location_rank(all_incidents_df)
-    augmented_df['Side of Town']=all_incidents_df['Side of Town'].copy()
-    augmented_df['Incident Rank'] = calculate_incident_rank(all_incidents_df)
+    all_incidents_df['Day of the Week'] = calculate_day_of_week(all_incidents_df)
+    # augmented_df['Time of Day'] = all_incidents_df['Time of Day'].copy()
+    all_incidents_df['Weather'] = fetch_weather_code_for_df(all_incidents_df)
+    all_incidents_df['Location Rank'] = calculate_location_rank(all_incidents_df)
+    # augmented_df['Side of Town']=all_incidents_df['Side of Town'].copy()
+    all_incidents_df['Incident Rank'] = calculate_incident_rank(all_incidents_df)
     # augmented_df['Location'] = all_incidents_df['Location'].copy()
-    augmented_df['Nature'] = all_incidents_df['Nature'].copy()
-    augmented_df['EMSSTAT'] = calculate_emsstat(all_incidents_df)
+    # augmented_df['Nature'] = all_incidents_df['Nature'].copy()
+    all_incidents_df['EMSSTAT'] = calculate_emsstat(all_incidents_df)
 
-    return augmented_df
+    # return all_incidents_df
 def main(urls_filename):
-    # apikey
+    api_key = 'AIzaSyApMAgl_myEP06P6-GHzeTsAYbTdOsMa70'
     """Process incident data from multiple PDF URLs listed in a given file."""
     if not os.path.exists('resources'):
         os.makedirs('resources')
