@@ -1,4 +1,4 @@
-## CIS6930SP24 - Assignment2 - Incident Report Processing
+## Norman PD Incident Data Pipeline and Visualization
 
 **Name:** Pratham Sharma
 **UFID:** 99812068
@@ -22,18 +22,26 @@ pipenv install
 To execute the code following command is used:
 
 ```
-python main.py --urls <path_to_file_with_pdf_urls>
+pipenv run python assignment.py --urls (<path_to_file_with_pdf_urls>)
 ```
 
-Replace `<path_to_file_with_pdf_urls>` with the path to a text file containing URLs of the PDF files to be processed, one URL per line.
+Or Replace `<path_to_file_with_pdf_urls>` with the path to a text file containing URLs of the PDF files to be processed, one URL per line.
 
  Example :- 
 
 ```
-python main.py --urls pdf_urls.txt
+pipenv run python main.py --urls pdf_urls.txt
 ```
 
 This command will process the PDFs listed in `pdf_urls.txt`, extract incident data, geocode locations, augment data with side of town and weather information, and output the augmented data in a tab-separated CSV file.
+
+Visualization
+
+Example :- 
+
+```
+pipenv run streamlit run src/norman.py
+```
 
 ## Functions Overview
 
