@@ -3,7 +3,7 @@
 **Name:** Pratham Sharma  
 **Email:** sharmapratham@ufl.edu
 
-## Assignment Description
+## Project Description
 
 This project processes and augments data from incident reports from the Norman, Oklahoma City Police Department. It extracts events from PDF files, uses the Google Maps API to geocode event locations, determines parts of the city for each event based on coordinates, calculates event and location groups, and assigns weather information to the data at each time and event using the Historical Weather API. The goal is to provide improved event insights for further analysis.
 
