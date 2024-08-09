@@ -325,9 +325,9 @@ def create_augmented_dataframe(all_incidents_df):
     # augmented_df = pd.DataFrame()
     
     
-    all_incidents_df['Day of the Week'] = calculate_day_of_week(all_incidents_df)
+    calculate_day_of_week(all_incidents_df)
     # augmented_df['Time of Day'] = all_incidents_df['Time of Day'].copy()
-    all_incidents_df['Weather'] = fetch_weather_code_for_df(all_incidents_df)
+    fetch_weather_code_for_df(all_incidents_df)
     all_incidents_df['Location Rank'] = calculate_location_rank(all_incidents_df)
     # augmented_df['Side of Town']=all_incidents_df['Side of Town'].copy()
     all_incidents_df['Incident Rank'] = calculate_incident_rank(all_incidents_df)
