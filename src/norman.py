@@ -77,12 +77,12 @@ def main():
 
     with st.sidebar:
         st.header("Settings ⚙️")
-        st.warning("The date range should be between 08/01/2024 and 08/31/2024 only.")
+        st.warning("The date range should be between 10/01/2024 and 10/31/2024 only.")
         st.warning("Fetching data for multiple dates may take more time. For a better experience, please use a single date.")
 
         # Input date range
-        start_date = st.date_input("Start Date", datetime(2024, 8, 1))
-        end_date = st.date_input("End Date", datetime(2024, 8, 1))
+        start_date = st.date_input("Start Date", datetime(2024, 10, 1))
+        end_date = st.date_input("End Date", datetime(2024, 10, 1))
 
     if 'all_incidents_df' not in st.session_state:
         st.session_state.all_incidents_df = pd.DataFrame()
