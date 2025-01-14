@@ -81,8 +81,8 @@ def main():
         st.warning("Fetching data for multiple dates may take more time. For a better experience, please use a single date.")
 
         # Input date range
-        start_date = st.date_input("Start Date", datetime(2024, 10, 1))
-        end_date = st.date_input("End Date", datetime(2024, 10, 1))
+        start_date = st.date_input("Start Date", datetime(2024, 12, 1))
+        end_date = st.date_input("End Date", datetime(2024, 12, 1))
 
     if 'all_incidents_df' not in st.session_state:
         st.session_state.all_incidents_df = pd.DataFrame()
