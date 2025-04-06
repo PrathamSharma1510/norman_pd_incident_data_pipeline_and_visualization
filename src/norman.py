@@ -7,22 +7,19 @@ from sklearn.cluster import KMeans
 from datetime import datetime, timedelta
 import sys
 import os
+import time
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Import your existing functions from assignment2.py
 from assignment2 import extract_incidents_from_pdf, download_pdf, ensure_geocoding, side_of_town, calculate_time_of_day, create_augmented_dataframe
 
-def generate_urls(start_date, end_date):
-    base_url = "https://www.normanok.gov/sites/default/files/documents/"
-    current_date = start_date
-    urls = []
-    while current_date <= end_date:
-        url = base_url + current_date.strftime("%Y-%m") + "/" + current_date.strftime("%Y-%m-%d") + "_daily_incident_summary.pdf"
-        urls.append(url)
-        current_date += timedelta(days=1)
-    return urls
+# Create a cache directory for temporary files
+CACHE_DIR = os.path.join(os.path.dirname(__file__), '..', 'cache')
+os.makedirs(CACHE_DIR, exist_ok=True)
 
+# Configure caching for better performance
+@st.cache_data(ttl=3600)  # Cache data for 1 hour
 def fetch_data_from_urls(urls):
     all_incidents_df = pd.DataFrame()
 
@@ -35,6 +32,17 @@ def fetch_data_from_urls(urls):
             st.warning(f"Failed to process {url}: {e}")
 
     return all_incidents_df
+
+@st.cache_data(ttl=3600)  # Cache data for 1 hour
+def generate_urls(start_date, end_date):
+    base_url = "https://www.normanok.gov/sites/default/files/documents/"
+    current_date = start_date
+    urls = []
+    while current_date <= end_date:
+        url = base_url + current_date.strftime("%Y-%m") + "/" + current_date.strftime("%Y-%m-%d") + "_daily_incident_summary.pdf"
+        urls.append(url)
+        current_date += timedelta(days=1)
+    return urls
 
 def show_correlation_matrix(df):
     st.subheader("Correlation Matrix 📊")
@@ -66,7 +74,10 @@ def incident_clustering(df):
     kmeans = KMeans(n_clusters=n_clusters)
     df = df.dropna(subset=['Latitude', 'Longitude'])
     df['Cluster'] = kmeans.fit_predict(df[['Latitude', 'Longitude']])
-    fig = px.scatter_mapbox(df, lat='Latitude', lon='Longitude', color='Cluster', mapbox_style="carto-positron", title='Incident Clusters')
+    fig = px.scatter_geo(df, lat='Latitude', lon='Longitude', color='Cluster', 
+                        title='Incident Clusters',
+                        scope='usa',
+                        projection='albers usa')
     st.plotly_chart(fig)
 
 def main():
@@ -75,14 +86,46 @@ def main():
     st.title("🚓 Norman Police Incident Data Fetcher")
     st.markdown("## Fetch and visualize incident data from the Norman Police Department.")
 
+    # Add information card at the top
+    with st.container():
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.info("📅 Available date range: March 1-31, 2025")
+        with col2:
+            if 'all_incidents_df' in st.session_state and not st.session_state.all_incidents_df.empty:
+                df = st.session_state.all_incidents_df
+                total_incidents = len(df)
+                unique_natures = df['Nature'].nunique()
+                most_common = df['Nature'].mode()[0]
+                info_text = f"""📊 Data Statistics:
+- Total Incidents: {total_incidents}
+- Unique Incident Types: {unique_natures}
+- Most Common: {most_common}"""
+                st.info(info_text)
+            else:
+                st.info("📊 Total Incidents: No data loaded")
+        with col3:
+            if 'augmented_df' in st.session_state:
+                df = st.session_state.augmented_df
+                info_text = f"""✨ Augmented Data Details:
+- Geocoded Locations
+- Weather Data Added
+- Time Analysis Added"""
+                st.info(info_text)
+            else:
+                st.info("✨ Data Status: Raw")
+
     with st.sidebar:
         st.header("Settings ⚙️")
-        st.warning("The date range should be between 10/01/2024 and 10/31/2024 only.")
+        st.warning("The date range should be between 03/01/2025 and 03/31/2025 only.")
         st.warning("Fetching data for multiple dates may take more time. For a better experience, please use a single date.")
 
-        # Input date range
-        start_date = st.date_input("Start Date", datetime(2024, 12, 1))
-        end_date = st.date_input("End Date", datetime(2024, 12, 1))
+        # Input date range with better UI
+        col1, col2 = st.columns(2)
+        with col1:
+            start_date = st.date_input("Start Date", datetime(2025, 3, 1))
+        with col2:
+            end_date = st.date_input("End Date", datetime(2025, 3, 1))
 
     if 'all_incidents_df' not in st.session_state:
         st.session_state.all_incidents_df = pd.DataFrame()
@@ -90,12 +133,20 @@ def main():
     if st.sidebar.button("Fetch Data 🗂️"):
         if start_date > end_date:
             st.sidebar.error("End Date must be after Start Date")
+        elif start_date < datetime(2025, 3, 1).date() or end_date > datetime(2025, 3, 31).date():
+            st.sidebar.error("Please select dates between March 1, 2025 and March 31, 2025")
         elif (end_date - start_date).days > 3:
             st.sidebar.error("The selected date range is too large and may cause delays in data augmentation. Please select a range less than 3 days.")
         else:
-            urls = generate_urls(start_date, end_date)
-            all_incidents_df = fetch_data_from_urls(urls)
-            st.session_state.all_incidents_df = all_incidents_df
+            with st.spinner('Fetching data... This might take a few minutes.'):
+                # Use cached function for better performance
+                urls = generate_urls(start_date, end_date)
+                all_incidents_df = fetch_data_from_urls(urls)
+                if not all_incidents_df.empty:
+                    st.session_state.all_incidents_df = all_incidents_df
+                    st.success('Data fetched successfully!')
+                else:
+                    st.error('No data was fetched. Please check the date range and try again.')
 
     if not st.session_state.all_incidents_df.empty:
         st.subheader("Extracted Data 📄")
@@ -103,20 +154,33 @@ def main():
 
         # Button to augment data
         if st.sidebar.button("Augment Data 🔧"):
-            with st.spinner('Augmenting data... This might take a few minutes, please stay tight.'):
-                api_key = st.secrets["api"]["key"]  # Replace with your actual API key
-                all_incidents_df = ensure_geocoding(st.session_state.all_incidents_df, api_key)
-                all_incidents_df = side_of_town(all_incidents_df)
-                all_incidents_df = calculate_time_of_day(all_incidents_df)
-                create_augmented_dataframe(all_incidents_df)
-                
-                st.session_state.augmented_df = all_incidents_df
-                st.success('Data augmented successfully!')
+            try:
+                with st.spinner('Augmenting data... This might take a few minutes, please stay tight.'):
+                    api_key = st.secrets["api"]["key"]
+                    if not api_key:
+                        st.error("API key not found. Please check your configuration.")
+                        return
+                    
+                    # Use cached functions for better performance
+                    all_incidents_df = ensure_geocoding(st.session_state.all_incidents_df, api_key)
+                    all_incidents_df = side_of_town(all_incidents_df)
+                    all_incidents_df = calculate_time_of_day(all_incidents_df)
+                    create_augmented_dataframe(all_incidents_df)
+                    
+                    # Validate augmented data
+                    required_columns = ['Latitude', 'Longitude', 'Time of Day', 'Day of Week', 'Side of Town', 'WMO Code']
+                    missing_columns = [col for col in required_columns if col not in all_incidents_df.columns]
+                    if missing_columns:
+                        st.warning(f"Some augmented data is missing: {', '.join(missing_columns)}")
+                    
+                    st.session_state.augmented_df = all_incidents_df
+                    st.success('Data augmented successfully!')
+            except Exception as e:
+                st.error(f"Error during data augmentation: {str(e)}")
 
     if 'augmented_df' in st.session_state:
         st.subheader("Augmented Data 📊")
         st.dataframe(st.session_state.augmented_df)
-
 
         st.markdown("## Visualizations 📊")
         if 'selected_types' not in st.session_state:
@@ -147,7 +211,7 @@ def main():
             fig.update_layout(title='Incident Types and Their Frequencies', xaxis_title='Incident Type', yaxis_title='Number of Incidents')
             st.plotly_chart(fig)
 
-        # 3. Geographic Distribution of Incidents
+        # Geographic Distribution of Incidents
         st.subheader("Geographic Distribution of Incidents 🗺️")
         st.write("This map shows the geographic distribution of incidents.")
         map_df = st.session_state.augmented_df[['Latitude', 'Longitude']].rename(columns={'Latitude': 'latitude', 'Longitude': 'longitude'})
@@ -176,7 +240,7 @@ def main():
         # Correlation Matrix
         show_correlation_matrix(st.session_state.augmented_df)
 
-        #  Search and Highlight
+        # Search and Highlight
         search_and_highlight(st.session_state.augmented_df)
 
         # Incident Clustering
