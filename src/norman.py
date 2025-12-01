@@ -18,6 +18,54 @@ from assignment2 import extract_incidents_from_pdf, download_pdf, ensure_geocodi
 CACHE_DIR = os.path.join(os.path.dirname(__file__), '..', 'cache')
 os.makedirs(CACHE_DIR, exist_ok=True)
 
+# Data directory and file path for persistent storage
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
+DATA_FILE = os.path.join(DATA_DIR, 'incident_history.csv')
+
+def get_available_pdfs():
+    """List all PDF files in the data directory."""
+    if not os.path.exists(DATA_DIR):
+        return []
+    return sorted([f for f in os.listdir(DATA_DIR) if f.endswith('.pdf')])
+
+def get_available_dates():
+    """Extract available dates from PDF filenames in the data directory."""
+    pdf_files = get_available_pdfs()
+    dates = []
+    for filename in pdf_files:
+        # Expected format: YYYY-MM-DD_daily_incident_summary.pdf
+        try:
+            date_str = filename.split('_')[0]  # Get YYYY-MM-DD part
+            date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()
+            dates.append(date_obj)
+        except (ValueError, IndexError):
+            continue
+    return sorted(dates)
+
+def get_pdf_for_date(selected_date):
+    """Get the PDF filename for a given date."""
+    date_str = selected_date.strftime('%Y-%m-%d')
+    return f"{date_str}_daily_incident_summary.pdf"
+
+def load_existing_data():
+    """Load historical data from the CSV file."""
+    if os.path.exists(DATA_FILE):
+        try:
+            return pd.read_csv(DATA_FILE)
+        except Exception as e:
+            st.error(f"Error loading history: {e}")
+            return pd.DataFrame()
+    return pd.DataFrame()
+
+def save_data(df):
+    """Save the dataframe to the persistent CSV file."""
+    try:
+        df.to_csv(DATA_FILE, index=False)
+        return True
+    except Exception as e:
+        st.error(f"Error saving data: {e}")
+        return False
+
 # Configure caching for better performance
 @st.cache_data(ttl=3600)  # Cache data for 1 hour
 def fetch_data_from_urls(urls):
@@ -25,7 +73,17 @@ def fetch_data_from_urls(urls):
 
     for url in urls:
         try:
-            pdf_path = download_pdf(url)
+            # Derive a filename from the URL so each day is stored uniquely
+            filename = url.split('/')[-1]
+            local_path = os.path.join(CACHE_DIR, filename)
+            
+            # Only download if we don't already have it
+            if not os.path.exists(local_path):
+                download_pdf(url, save_path=local_path)
+                pdf_path = local_path
+            else:
+                pdf_path = local_path
+
             incidents_df = extract_incidents_from_pdf(pdf_path)
             all_incidents_df = pd.concat([all_incidents_df, incidents_df], ignore_index=True)
         except Exception as e:
@@ -83,70 +141,129 @@ def incident_clustering(df):
 def main():
     st.set_page_config(page_title="Norman Police Incident Data", page_icon="🚓", layout="wide")
 
-    st.title("🚓 Norman Police Incident Data Fetcher")
-    st.markdown("## Fetch and visualize incident data from the Norman Police Department.")
+    st.title("🚓 Norman Police Incident Data Analyzer")
+    st.markdown("Analyze and visualize incident data from the Norman Police Department")
+    st.markdown("---")
 
-    # Add information card at the top
+    # Add information cards at the top
+    available_dates = get_available_dates()
+    
     with st.container():
         col1, col2, col3 = st.columns(3)
+        
         with col1:
-            st.info("📅 Available date range: March 1-31, 2025")
+            if available_dates:
+                date_range = f"{available_dates[0].strftime('%b %d, %Y')} to {available_dates[-1].strftime('%b %d, %Y')}"
+                st.info(f"📅 **Available Data**\n\n{date_range}\n\n**{len(available_dates)} days** of data available")
+            else:
+                st.info("📅 **Available Data**\n\nNo data files found")
+        
         with col2:
             if 'all_incidents_df' in st.session_state and not st.session_state.all_incidents_df.empty:
                 df = st.session_state.all_incidents_df
                 total_incidents = len(df)
                 unique_natures = df['Nature'].nunique()
-                most_common = df['Nature'].mode()[0]
-                info_text = f"""📊 Data Statistics:
-- Total Incidents: {total_incidents}
-- Unique Incident Types: {unique_natures}
-- Most Common: {most_common}"""
-                st.info(info_text)
+                st.success(f"📊 **Loaded Data**\n\n**{total_incidents:,}** incidents\n\n**{unique_natures}** unique types")
             else:
-                st.info("📊 Total Incidents: No data loaded")
+                st.info("📊 **Loaded Data**\n\nNo data loaded yet\n\nSelect dates and click 'Load Data'")
+        
         with col3:
-            if 'augmented_df' in st.session_state:
+            if 'augmented_df' in st.session_state and not st.session_state.augmented_df.empty:
                 df = st.session_state.augmented_df
-                info_text = f"""✨ Augmented Data Details:
-- Geocoded Locations
-- Weather Data Added
-- Time Analysis Added"""
-                st.info(info_text)
+                most_common = df['Nature'].mode()[0] if not df['Nature'].mode().empty else "N/A"
+                st.success(f"✨ **Data Status**\n\n**Augmented** ✓\n\nMost common: *{most_common}*")
             else:
-                st.info("✨ Data Status: Raw")
+                if 'all_incidents_df' in st.session_state and not st.session_state.all_incidents_df.empty:
+                    st.warning("✨ **Data Status**\n\n**Raw Data**\n\nClick 'Augment Data' for enhanced analysis")
+                else:
+                    st.info("✨ **Data Status**\n\nNo data to augment")
+    
+    st.markdown("---")
 
     with st.sidebar:
         st.header("Settings ⚙️")
-        st.warning("The date range should be between 03/01/2025 and 03/31/2025 only.")
-        st.warning("Fetching data for multiple dates may take more time. For a better experience, please use a single date.")
-
-        # Input date range with better UI
-        col1, col2 = st.columns(2)
-        with col1:
-            start_date = st.date_input("Start Date", datetime(2025, 3, 1))
-        with col2:
-            end_date = st.date_input("End Date", datetime(2025, 3, 1))
+        
+        # Get available dates from the data directory
+        available_dates = get_available_dates()
+        
+        if not available_dates:
+            st.error("No PDF files found in the 'data' folder.")
+            selected_dates = []
+        else:
+            st.info(f"📅 Available dates: {len(available_dates)}")
+            
+            # Option to select all dates
+            select_all = st.checkbox("Select All Dates", value=False)
+            
+            if select_all:
+                selected_dates = available_dates
+                st.success(f"✓ All {len(available_dates)} dates selected")
+            else:
+                # Date range picker (default to first date only)
+                col1, col2 = st.columns(2)
+                with col1:
+                    start_date = st.date_input(
+                        "From Date",
+                        value=available_dates[0],
+                        min_value=available_dates[0],
+                        max_value=available_dates[-1]
+                    )
+                with col2:
+                    end_date = st.date_input(
+                        "To Date",
+                        value=available_dates[0],  # Default to first date only
+                        min_value=available_dates[0],
+                        max_value=available_dates[-1]
+                    )
+                
+                # Filter dates based on range
+                selected_dates = [d for d in available_dates if start_date <= d <= end_date]
+                
+                if selected_dates:
+                    st.info(f"📊 {len(selected_dates)} date(s) selected")
+                else:
+                    st.warning("No dates in selected range")
+            
+            # Show warning if multiple dates are selected
+            if len(selected_dates) >= 3:
+                st.warning("⚠️ Processing multiple dates may take significant time, especially during data augmentation.")
 
     if 'all_incidents_df' not in st.session_state:
         st.session_state.all_incidents_df = pd.DataFrame()
 
-    if st.sidebar.button("Fetch Data 🗂️"):
-        if start_date > end_date:
-            st.sidebar.error("End Date must be after Start Date")
-        elif start_date < datetime(2025, 3, 1).date() or end_date > datetime(2025, 3, 31).date():
-            st.sidebar.error("Please select dates between March 1, 2025 and March 31, 2025")
-        elif (end_date - start_date).days > 3:
-            st.sidebar.error("The selected date range is too large and may cause delays in data augmentation. Please select a range less than 3 days.")
+    if st.sidebar.button("Load Selected Data 🗂️"):
+        if not selected_dates:
+            st.sidebar.error("Please select at least one date.")
         else:
-            with st.spinner('Fetching data... This might take a few minutes.'):
-                # Use cached function for better performance
-                urls = generate_urls(start_date, end_date)
-                all_incidents_df = fetch_data_from_urls(urls)
-                if not all_incidents_df.empty:
-                    st.session_state.all_incidents_df = all_incidents_df
-                    st.success('Data fetched successfully!')
+            with st.spinner('Processing selected dates...'):
+                combined_df = pd.DataFrame()
+                
+                for selected_date in selected_dates:
+                    filename = get_pdf_for_date(selected_date)
+                    file_path = os.path.join(DATA_DIR, filename)
+                    
+                    if os.path.exists(file_path):
+                        try:
+                            # Extract data from each selected PDF
+                            incidents_df = extract_incidents_from_pdf(file_path)
+                            combined_df = pd.concat([combined_df, incidents_df], ignore_index=True)
+                        except Exception as e:
+                            st.error(f"Failed to process {filename}: {e}")
+                    else:
+                        st.warning(f"File not found: {filename}")
+                
+                if not combined_df.empty:
+                    # Remove duplicates
+                    combined_df = combined_df.drop_duplicates(subset=['Date/Time', 'Incident Number', 'Location'])
+                    
+                    st.session_state.all_incidents_df = combined_df
+                    st.success(f"Successfully loaded {len(combined_df)} incidents from {len(selected_dates)} date(s)!")
+                    
+                    # Reset augmented data since raw data changed
+                    if 'augmented_df' in st.session_state:
+                        del st.session_state.augmented_df
                 else:
-                    st.error('No data was fetched. Please check the date range and try again.')
+                    st.error('No data found for the selected dates.')
 
     if not st.session_state.all_incidents_df.empty:
         st.subheader("Extracted Data 📄")
